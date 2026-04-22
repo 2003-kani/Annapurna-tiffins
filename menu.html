@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annapurna Tiffins | Menu</title>
+  <meta name="description" content="Menu page for Annapurna Tiffins.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="floating-whatsapp" href="https://wa.me/916281110993?text=Hi%20Annapurna%20Tiffins%2C%20I%20want%20to%20place%20an%20order." target="_blank" rel="noopener">Order on WhatsApp</a>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Annapurna Tiffins home">
+        <img class="brand-logo" src="assets/logo.svg" alt="Annapurna Tiffins logo">
+        <span class="brand-text">Annapurna Tiffins</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="contact.html">Contact</a>
+        <a href="#" class="cart-toggle" onclick="toggleCart()">
+          <span class="cart-icon">Cart</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero home-hero">
+    <div class="hero-content home-hero-content single-column">
+      <div class="hero-left">
+        <p class="badge">🍽️ Complete Menu Available</p>
+        <h1>Our Delicious Menu</h1>
+        <p class="tagline">Authentic South Indian breakfast dishes, all at just Rs 45 per plate</p>
+        
+        <div class="trust-badges">
+          <div class="trust-item">
+            <span class="trust-icon">⭐</span>
+            <span>4.8/5 Average Rating</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🕐</span>
+            <span>Fresh Daily 6 AM - 12 PM</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">💰</span>
+            <span>Fixed Price Rs 45</span>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary btn-large" href="tel:+916281110993">
+            📞 Call for Order
+          </a>
+          <a class="btn btn-secondary btn-large" href="contact.html">
+            📱 Order Online
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-accent">
+      <div class="container">
+        <h2>Choose Your Favorite Breakfast</h2>
+        <p class="section-subtitle">All items prepared fresh daily with traditional recipes</p>
+        <div class="dish-grid">
+        <article class="dish-card">
+          <img src="assets/menu/tiffin-placeholder.svg" alt="Idli">
+          <div class="dish-content">
+            <h3>Idli</h3>
+            <p class="dish-meta">Soft steamed rice cakes with chutney & sambar</p>
+            <div class="dish-row">
+              <p class="dish-price">Rs 45</p>
+              <p class="dish-rating">4.5 ★</p>
+            </div>
+            <button class="btn btn-secondary add-to-cart" onclick="addToCart('Idli', 45)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <img src="assets/menu/tiffin-placeholder.svg" alt="Vada">
+          <div class="dish-content">
+            <h3>Vada</h3>
+            <p class="dish-meta">Crispy medu vada served hot with chutney</p>
+            <div class="dish-row">
+              <p class="dish-price">Rs 45</p>
+              <p class="dish-rating">4.4 ★</p>
+            </div>
+            <button class="btn btn-secondary add-to-cart" onclick="addToCart('Vada', 45)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <img src="assets/menu/tiffin-placeholder.svg" alt="Puri">
+          <div class="dish-content">
+            <h3>Puri</h3>
+            <p class="dish-meta">Fluffy puris with tasty curry and chutney</p>
+            <div class="dish-row">
+              <p class="dish-price">Rs 45</p>
+              <p class="dish-rating">4.6 ★</p>
+            </div>
+            <button class="btn btn-secondary add-to-cart" onclick="addToCart('Puri', 45)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <img src="assets/menu/tiffin-placeholder.svg" alt="Bonda">
+          <div class="dish-content">
+            <h3>Bonda</h3>
+            <p class="dish-meta">Golden bonda, crunchy outside and soft inside</p>
+            <div class="dish-row">
+              <p class="dish-price">Rs 45</p>
+              <p class="dish-rating">4.3 ★</p>
+            </div>
+            <button class="btn btn-secondary add-to-cart" onclick="addToCart('Bonda', 45)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <img src="assets/menu/tiffin-placeholder.svg" alt="Masala Dosa">
+          <div class="dish-content">
+            <h3>Masala Dosa</h3>
+            <p class="dish-meta">Classic crispy dosa with masala filling</p>
+            <div class="dish-row">
+              <p class="dish-price">Rs 45</p>
+              <p class="dish-rating">4.8 ★</p>
+            </div>
+            <button class="btn btn-secondary add-to-cart" onclick="addToCart('Masala Dosa', 45)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <img src="assets/menu/tiffin-placeholder.svg" alt="Onion Dosa">
+          <div class="dish-content">
+            <h3>Onion Dosa</h3>
+            <p class="dish-meta">Crispy dosa topped with fresh onions and spices</p>
+            <div class="dish-row">
+              <p class="dish-price">Rs 45</p>
+              <p class="dish-rating">4.5 ★</p>
+            </div>
+            <button class="btn btn-secondary add-to-cart" onclick="addToCart('Onion Dosa', 45)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <img src="assets/menu/tiffin-placeholder.svg" alt="Uthappam">
+          <div class="dish-content">
+            <h3>Uthappam</h3>
+            <p class="dish-meta">Soft thick uthappam with onion and tomato toppings</p>
+            <div class="dish-row">
+              <p class="dish-price">Rs 45</p>
+              <p class="dish-rating">4.4 ★</p>
+            </div>
+            <button class="btn btn-secondary add-to-cart" onclick="addToCart('Uthappam', 45)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <img src="assets/menu/tiffin-placeholder.svg" alt="Set Dosa">
+          <div class="dish-content">
+            <h3>Set Dosa</h3>
+            <p class="dish-meta">Soft set dosa served in pairs with chutney and sambar</p>
+            <div class="dish-row">
+              <p class="dish-price">Rs 45</p>
+              <p class="dish-rating">4.6 ★</p>
+            </div>
+            <button class="btn btn-secondary add-to-cart" onclick="addToCart('Set Dosa', 45)">Add to Cart</button>
+          </div>
+        </article>
+        </div>
+
+        <div class="menu-info">
+          <div class="info-card">
+            <h3>🍽️ All Items Include</h3>
+            <ul>
+              <li>Fresh chutney</li>
+              <li>Hot sambar</li>
+              <li>Traditional preparation</li>
+              <li>Hygienic packaging</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>📦 Order Information</h3>
+            <ul>
+              <li>Minimum order: Rs 100</li>
+              <li>Delivery charge: Rs 5 per plate</li>
+              <li>Timings: 6 AM - 12 PM</li>
+              <li>Area: Hanamkonda</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-section">
+          <h2>Ready to Order Your Favorite Breakfast?</h2>
+          <p>Call us or place your order online - we'll deliver hot and fresh!</p>
+          <div class="cta-buttons">
+            <a class="btn btn-primary btn-large" href="tel:+916281110993">
+              📞 Call Now
+            </a>
+            <a class="btn btn-secondary btn-large" href="contact.html">
+              📱 Order Online
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart">Your cart is empty</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">Rs 0</span>
+      </div>
+      <div class="cart-minimum">
+        <small>Minimum order: Rs 100</small>
+        <small>Delivery only in Gopalpur, Kux Road, Hanamkonda</small>
+      </div>
+      
+      <!-- Customer Details Form -->
+      <div class="customer-form" id="customerForm" style="display: none;">
+        <h4>Delivery Details</h4>
+        <div class="form-group">
+          <label for="customerName">Name *</label>
+          <input type="text" id="customerName" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="customerPhone">Phone *</label>
+          <input type="tel" id="customerPhone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+          <label for="customerAddress">Address *</label>
+          <textarea id="customerAddress" placeholder="Enter your full address (Gopalpur, Kux Road, Hanamkonda area only)" required></textarea>
+          <small class="area-note">We deliver only in Gopalpur, Kux Road, Hanamkonda area</small>
+        </div>
+        <div class="form-buttons">
+          <button class="btn btn-secondary" onclick="hideCustomerForm()">Back to Cart</button>
+          <button class="btn btn-primary" onclick="submitOrder()">Submit Order</button>
+        </div>
+      </div>
+      
+      <button class="btn btn-primary btn-large cart-order-btn" onclick="showCustomerForm()" id="orderBtn" disabled>
+        Order Now on WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>🍽️ Menu Info</h3>
+        <p>All items: Rs 45 per plate</p>
+        <p>Minimum order: Rs 100</p>
+        <p>Fresh prepared daily</p>
+      </div>
+      <div>
+        <h3>📞 Contact</h3>
+        <p><a href="tel:+916281110993">+91 62811 10993</a></p>
+        <p><a href="https://wa.me/916281110993" target="_blank">WhatsApp Order</a></p>
+      </div>
+      <div>
+        <h3>🚀 Quick Links</h3>
+        <p><a href="index.html">Back to Home</a></p>
+        <p><a href="contact.html">Place Order</a></p>
+        <p>📍 Gopalpur, Hanamkonda</p>
+      </div>
+    </div>
+  </footer>
+<script>
+  // Cart functionality
+  let cart = [];
+  const MIN_ORDER_AMOUNT = 100;
+
+  function addToCart(itemName, price) {
+    const existingItem = cart.find(item => item.name === itemName);
+    
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({
+        name: itemName,
+        price: price,
+        quantity: 1
+      });
+    }
+    
+    updateCart();
+    showAddAnimation(event.target);
+  }
+
+  function removeFromCart(itemName) {
+    cart = cart.filter(item => item.name !== itemName);
+    updateCart();
+  }
+
+  function updateQuantity(itemName, change) {
+    const item = cart.find(item => item.name === itemName);
+    if (item) {
+      item.quantity += change;
+      if (item.quantity <= 0) {
+        removeFromCart(itemName);
+      } else {
+        updateCart();
+      }
+    }
+  }
+
+  function updateCart() {
+    const cartCount = document.getElementById('cartCount');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const orderBtn = document.getElementById('orderBtn');
+    
+    // Update cart count
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+    cartCount.style.display = totalItems > 0 ? 'block' : 'none';
+    
+    // Update cart items
+    if (cart.length === 0) {
+      cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+    } else {
+      cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <p>Rs ${item.price} × ${item.quantity}</p>
+          </div>
+          <div class="cart-item-controls">
+            <button class="quantity-btn" onclick="updateQuantity('${item.name}', -1)">-</button>
+            <span>${item.quantity}</span>
+            <button class="quantity-btn" onclick="updateQuantity('${item.name}', 1)">+</button>
+            <button class="remove-btn" onclick="removeFromCart('${item.name}')">×</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    // Update total
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    cartTotal.textContent = `Rs ${total}`;
+    
+    // Enable/disable order button
+    orderBtn.disabled = total < MIN_ORDER_AMOUNT;
+    if (total < MIN_ORDER_AMOUNT) {
+      orderBtn.textContent = `Add Rs ${MIN_ORDER_AMOUNT - total} more to order`;
+    } else {
+      orderBtn.textContent = 'Order Now on WhatsApp';
+    }
+  }
+
+  function toggleCart() {
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartOverlay = document.getElementById('cartOverlay');
+    
+    cartSidebar.classList.toggle('open');
+    cartOverlay.classList.toggle('open');
+  }
+
+  function showCustomerForm() {
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    if (total < MIN_ORDER_AMOUNT) {
+      return;
+    }
+    
+    document.getElementById('orderBtn').style.display = 'none';
+    document.getElementById('customerForm').style.display = 'block';
+  }
+
+  function hideCustomerForm() {
+    document.getElementById('customerForm').style.display = 'none';
+    document.getElementById('orderBtn').style.display = 'block';
+  }
+
+  function validateDeliveryArea(address) {
+    const validAreas = ['gopalpur', 'kux road', 'hanamkonda', 'hanmakonda'];
+    const addressLower = address.toLowerCase();
+    
+    return validAreas.some(area => addressLower.includes(area));
+  }
+
+  function submitOrder() {
+    const name = document.getElementById('customerName').value.trim();
+    const phone = document.getElementById('customerPhone').value.trim();
+    const address = document.getElementById('customerAddress').value.trim();
+    
+    // Validation
+    if (!name || !phone || !address) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
+    if (phone.length !== 10 || !/^\d+$/.test(phone)) {
+      alert('Please enter a valid 10-digit phone number');
+      return;
+    }
+    
+    if (!validateDeliveryArea(address)) {
+      alert('Sorry, we deliver only in Gopalpur, Kux Road, Hanamkonda area. Please include one of these areas in your address.');
+      return;
+    }
+    
+    // Generate WhatsApp message
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const deliveryCharge = cart.length * 5;
+    const finalTotal = total + deliveryCharge;
+    
+    let message = 'Hi Annapurna Tiffins,%0A%0AI would like to place an order:%0A%0A';
+    message += '--- ORDER DETAILS ---%0A';
+    
+    cart.forEach(item => {
+      message += `${item.name}: ${item.quantity} plate(s) = Rs ${item.price * item.quantity}%0A`;
+    });
+    
+    message += '%0A--- CUSTOMER DETAILS ---%0A';
+    message += `Name: ${name}%0A`;
+    message += `Phone: ${phone}%0A`;
+    message += `Address: ${address}%0A`;
+    
+    message += '%0A--- PAYMENT DETAILS ---%0A';
+    message += `Total Amount: Rs ${total}%0A%0A`;
+    
+    message += '--- DELIVERY INFO ---%0A';
+    message += `Delivery Area: Gopalpur, Kux Road, Hanamkonda%0A`;
+    message += `Estimated Delivery: 30-45 minutes%0A%0A`;
+    
+    message += 'Thank you!';
+    
+    window.open(`https://wa.me/916281110993?text=${message}`, '_blank');
+    
+    // Clear cart after successful order
+    cart = [];
+    updateCart();
+    hideCustomerForm();
+    toggleCart();
+  }
+
+  function orderOnWhatsApp() {
+    // This function is now replaced by showCustomerForm()
+    showCustomerForm();
+  }
+
+  function showAddAnimation(button) {
+    button.textContent = 'Added!';
+    button.classList.add('added');
+    setTimeout(() => {
+      button.textContent = 'Add to Cart';
+      button.classList.remove('added');
+    }, 1000);
+  }
+
+  // Initialize cart on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCart();
+  });
+</script>
+</body>
+</html>

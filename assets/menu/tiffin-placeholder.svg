@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Annapurna Tiffins dish image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe8bf"/>
+      <stop offset="100%" stop-color="#ffd08a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="400" cy="270" r="150" fill="#fff7ea" stroke="#f3b56d" stroke-width="10"/>
+  <ellipse cx="345" cy="255" rx="58" ry="34" fill="#ffffff" stroke="#d9d9d9"/>
+  <ellipse cx="455" cy="255" rx="58" ry="34" fill="#ffffff" stroke="#d9d9d9"/>
+  <ellipse cx="400" cy="310" rx="70" ry="38" fill="#e8a35d"/>
+  <text x="400" y="450" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="42" font-weight="700" fill="#8a3d0f">Annapurna Tiffins</text>
+  <text x="400" y="495" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="30" fill="#6e4b2c">Fresh " Hygienic " Tasty</text>
+</svg>

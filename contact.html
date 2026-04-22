@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annapurna Tiffins | Contact & Order</title>
+  <meta name="description" content="Contact, map and online order page for Annapurna Tiffins.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="floating-whatsapp" href="https://wa.me/916281110993?text=Hi%20Annapurna%20Tiffins%2C%20I%20want%20to%20place%20an%20order." target="_blank" rel="noopener">Order on WhatsApp</a>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Annapurna Tiffins home">
+        <img class="brand-logo" src="assets/logo.svg" alt="Annapurna Tiffins logo">
+        <span class="brand-text">Annapurna Tiffins</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero home-hero">
+    <div class="hero-content home-hero-content single-column">
+      <div class="hero-left">
+        <p class="badge">📱 Contact & Fast Ordering</p>
+        <h1>Contact & Online Order</h1>
+        <p class="tagline">Call, WhatsApp, or use the quick form below to place your breakfast order.</p>
+        <div class="trust-badges">
+          <div class="trust-item">
+            <span class="trust-icon">🕐</span>
+            <span>Open Daily: 6 AM - 12 PM</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">📍</span>
+            <span>Serving Hanamkonda Area</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">💰</span>
+            <span>Any Tiffin: Rs 45</span>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-large" href="tel:+916281110993">
+            📞 Call Now
+          </a>
+          <a class="btn btn-secondary btn-large" href="https://wa.me/916281110993?text=Hi%20Annapurna%20Tiffins%2C%20I%20want%20to%20place%20an%20order." target="_blank" rel="noopener">
+            💬 WhatsApp Order
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+
+      <div class="order-grid">
+        <article class="card">
+          <h3>Contact Details</h3>
+          <p><a href="tel:+916281110993">Call: +91 62811 10993</a></p>
+          <p><a href="https://wa.me/916281110993" target="_blank" rel="noopener">WhatsApp: +91 62811 10993</a></p>
+          <p><a href="https://www.google.com/maps/place/Annapurna+Tiffin+Center/@18.019922,79.5437839,17z/data=!3m1!4b1!4m6!3m5!1s0x3a334f9b365c5d9d:0xa2246c9f524ab6fb!8m2!3d18.019922!4d79.5437839!16s%2Fg%2F11z4v77q4f!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Open Exact Google Maps Link</a></p>
+          <p>Timings: 6:00 AM - 12:00 PM</p>
+          <p>Delivery charge: Rs 5 per plate</p>
+        </article>
+
+        <article class="card">
+          <h3>Online Order Rule</h3>
+          <p class="fresh-note">Order can be placed only above Rs 100.</p>
+          <p>Online any tiffin price: Rs 45.</p>
+        </article>
+      </div>
+
+      <section class="section section-accent">
+        <div class="container compact">
+          <h2>Place Your Order</h2>
+          <form id="orderForm" class="order-form">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required pattern="[0-9]{10}">
+
+            <label for="item">Item</label>
+            <select id="item" name="item" required>
+              <option value="">Select item</option>
+              <option>Idli</option>
+              <option>Vada</option>
+              <option>Puri</option>
+              <option>Bonda</option>
+              <option>Plain Dosa</option>
+              <option>Masala Dosa</option>
+              <option>Onion Dosa</option>
+              <option>Uthappam</option>
+              <option>Set Dosa</option>
+            </select>
+
+            <label for="qty">Quantity</label>
+            <input id="qty" name="qty" type="number" min="1" required>
+
+            <p id="totalText" class="total-text">Estimated total (Rs 45 x qty): Rs 0</p>
+            <p id="formMsg" class="form-msg"></p>
+
+            <button type="submit" class="btn btn-primary">Submit Order on WhatsApp</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Location Map</h2>
+        <div class="map-wrap">
+          <iframe
+            title="Annapurna Tiffins Location"
+            src="https://www.google.com/maps?q=Annapurna%20Tiffin%20Center%2C%2018.019922%2C79.5437839&z=17&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const PRICE_PER_ITEM = 45;
+    const MIN_ORDER_AMOUNT = 100;
+
+    const form = document.getElementById("orderForm");
+    const qtyInput = document.getElementById("qty");
+    const totalText = document.getElementById("totalText");
+    const formMsg = document.getElementById("formMsg");
+
+    function updateTotal() {
+      const qty = Number(qtyInput.value || 0);
+      const total = qty * PRICE_PER_ITEM;
+      totalText.textContent = `Estimated total (Rs 45 x qty): Rs ${total}`;
+      return total;
+    }
+
+    qtyInput.addEventListener("input", updateTotal);
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      formMsg.textContent = "";
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const item = document.getElementById("item").value;
+      const qty = Number(qtyInput.value || 0);
+      const total = updateTotal();
+
+      if (total <= MIN_ORDER_AMOUNT) {
+        formMsg.textContent = "Order must be above Rs 100. Please increase quantity.";
+        return;
+      }
+
+      const message = `Hi Annapurna Tiffins,%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AItem: ${encodeURIComponent(item)}%0AQuantity: ${qty}%0ATotal: Rs ${total}`;
+      window.open(`https://wa.me/916281110993?text=${message}`, "_blank");
+    });
+  </script>
+</body>
+</html>
