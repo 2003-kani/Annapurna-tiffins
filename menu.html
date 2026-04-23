@@ -202,6 +202,53 @@
 
     <section class="section">
       <div class="container">
+        <h2>Ratings & Reviews</h2>
+        <p class="section-subtitle">Rate items and delivery experience. Your feedback helps us improve.</p>
+        <div class="reviews-grid">
+          <article class="card">
+            <h3>Rate Food Item</h3>
+            <form id="itemReviewForm" class="review-form">
+              <label for="reviewItem">Item</label>
+              <select id="reviewItem" required>
+                <option value="">Select Item</option>
+                <option>Idli</option>
+                <option>Vada</option>
+                <option>Puri</option>
+                <option>Bonda</option>
+                <option>Masala Dosa</option>
+                <option>Onion Dosa</option>
+                <option>Uthappam</option>
+                <option>Set Dosa</option>
+              </select>
+              <label for="itemRating">Rating (1-5)</label>
+              <input id="itemRating" type="number" min="1" max="5" required>
+              <label for="itemReviewText">Review</label>
+              <textarea id="itemReviewText" rows="3" placeholder="Tell us about taste and quality..." required></textarea>
+              <button type="submit" class="btn btn-secondary">Submit Item Review</button>
+            </form>
+          </article>
+          <article class="card">
+            <h3>Rate Delivery</h3>
+            <form id="deliveryReviewForm" class="review-form">
+              <label for="deliveryRating">Delivery Rating (1-5)</label>
+              <input id="deliveryRating" type="number" min="1" max="5" required>
+              <label for="deliveryReviewText">Delivery Feedback</label>
+              <textarea id="deliveryReviewText" rows="3" placeholder="Delivery speed, packaging, behavior..." required></textarea>
+              <button type="submit" class="btn btn-secondary">Submit Delivery Review</button>
+            </form>
+          </article>
+        </div>
+        <div class="card review-list-card">
+          <h3>Recent Customer Reviews</h3>
+          <div id="reviewList" class="review-list">
+            <p class="empty-cart">No reviews yet. Be the first to review.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
         <div class="cta-section">
           <h2>Ready to Order Your Favorite Breakfast?</h2>
           <p>Call us or place your order online - we'll deliver hot and fresh!</p>
@@ -475,6 +522,61 @@
   document.addEventListener('DOMContentLoaded', function() {
     updateCart();
   });
+</script>
+<script src="chatbot.js"></script>
+<script>
+  const reviewStorageKey = "annapurna_reviews";
+
+  function loadReviews() {
+    const reviewList = document.getElementById("reviewList");
+    const reviews = JSON.parse(localStorage.getItem(reviewStorageKey) || "[]");
+    if (!reviews.length) {
+      reviewList.innerHTML = '<p class="empty-cart">No reviews yet. Be the first to review.</p>';
+      return;
+    }
+    reviewList.innerHTML = reviews
+      .slice(-8)
+      .reverse()
+      .map(
+        (r) => `
+          <article class="review-item">
+            <p class="review-head"><strong>${r.type}</strong> • ${r.rating} ★ ${r.item ? `• ${r.item}` : ""}</p>
+            <p>${r.text}</p>
+          </article>
+        `
+      )
+      .join("");
+  }
+
+  function saveReview(review) {
+    const reviews = JSON.parse(localStorage.getItem(reviewStorageKey) || "[]");
+    reviews.push(review);
+    localStorage.setItem(reviewStorageKey, JSON.stringify(reviews));
+    loadReviews();
+  }
+
+  document.getElementById("itemReviewForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    saveReview({
+      type: "Item Review",
+      item: document.getElementById("reviewItem").value,
+      rating: Number(document.getElementById("itemRating").value),
+      text: document.getElementById("itemReviewText").value.trim()
+    });
+    e.target.reset();
+  });
+
+  document.getElementById("deliveryReviewForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    saveReview({
+      type: "Delivery Review",
+      rating: Number(document.getElementById("deliveryRating").value),
+      text: document.getElementById("deliveryReviewText").value.trim()
+    });
+    e.target.reset();
+  });
+
+  loadReviews();
 </script>
 </body>
 </html>
