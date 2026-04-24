@@ -67,6 +67,43 @@ CREATE TABLE IF NOT EXISTS chatbot_messages (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Multi-restaurant support for MCP routing
+CREATE TABLE IF NOT EXISTS restaurants (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  code VARCHAR(40) NOT NULL UNIQUE,
+  name VARCHAR(120) NOT NULL,
+  country_code CHAR(2) NOT NULL DEFAULT 'IN',
+  timezone VARCHAR(64) NOT NULL DEFAULT 'Asia/Kolkata',
+  currency_code CHAR(3) NOT NULL DEFAULT 'INR',
+  is_active BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- MCP integration registry for restaurant connectors
+CREATE TABLE IF NOT EXISTS mcp_connections (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  restaurant_id BIGINT NOT NULL,
+  provider_name VARCHAR(80) NOT NULL,
+  endpoint_url VARCHAR(255) NOT NULL,
+  auth_type ENUM('none', 'api_key', 'oauth') NOT NULL DEFAULT 'none',
+  is_enabled BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_mcp_restaurant FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+);
+
+-- International order fields and restaurant ownership for order processing
+ALTER TABLE orders
+  ADD COLUMN restaurant_id BIGINT NULL,
+  ADD COLUMN customer_country_code CHAR(2) NOT NULL DEFAULT 'IN',
+  ADD COLUMN currency_code CHAR(3) NOT NULL DEFAULT 'INR',
+  ADD COLUMN fx_rate_to_inr DECIMAL(12,6) NULL,
+  ADD COLUMN external_order_ref VARCHAR(80) NULL;
+
+-- Add this once in environments that do not already have the constraint:
+-- ALTER TABLE orders
+--   ADD CONSTRAINT fk_orders_restaurant FOREIGN KEY (restaurant_id) REFERENCES restaurants(id);
+
 INSERT IGNORE INTO menu_items (name, price) VALUES
 ('Idli', 45.00),
 ('Vada', 45.00),
@@ -76,3 +113,6 @@ INSERT IGNORE INTO menu_items (name, price) VALUES
 ('Onion Dosa', 45.00),
 ('Uthappam', 45.00),
 ('Set Dosa', 45.00);
+
+INSERT IGNORE INTO restaurants (code, name, country_code, timezone, currency_code) VALUES
+('ANNAPURNA-HNK', 'Annapurna Tiffins Hanamkonda', 'IN', 'Asia/Kolkata', 'INR');

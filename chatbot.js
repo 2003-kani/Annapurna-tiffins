@@ -158,7 +158,25 @@
       "Thank you!"
     ].join("\n");
 
-    pushMsg(messages, "Bot", "Perfect. Opening WhatsApp with your order format.");
+    pushMsg(messages, "Bot", "Saving order in system and opening WhatsApp with your order format.");
+
+    // Try backend API first (if server is running), fallback to WhatsApp-only flow.
+    fetch("http://localhost:4000/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        phone,
+        address,
+        orderSource: "chatbot",
+        countryCode: "IN",
+        currencyCode: "INR",
+        items: pendingOrder.items
+      })
+    }).catch(function () {
+      // Ignore API failure and continue WhatsApp order flow for now.
+    });
+
     window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`, "_blank");
     formEl.reset();
     formEl.hidden = true;
