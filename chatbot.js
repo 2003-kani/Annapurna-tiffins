@@ -161,7 +161,7 @@
     pushMsg(messages, "Bot", "Saving order in system and opening WhatsApp with your order format.");
 
     // Try backend API first (if server is running), fallback to WhatsApp-only flow.
-    fetch("http://localhost:4000/api/orders", {
+    fetch("/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

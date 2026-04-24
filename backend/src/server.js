@@ -14,7 +14,8 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files from the root frontend directory
-app.use(express.static(path.join(__dirname, "../../")));
+// Static files are handled by Vercel automatically
+// app.use(express.static(path.join(__dirname, "../../")));
 
 app.get("/api/health", async (_req, res) => {
   try {
@@ -104,6 +105,10 @@ app.post("/api/orders", async (req, res) => {
 });
 
 const port = Number(process.env.PORT || 4000);
-app.listen(port, () => {
-  console.log(`API running on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`API running on http://localhost:${port}`);
+  });
+}
+
+export default app;
