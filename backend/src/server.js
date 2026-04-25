@@ -104,6 +104,54 @@ app.post("/api/orders", async (req, res) => {
   }
 });
 
+app.get("/api/orders", async (req, res) => {
+  try {
+    const [orders] = await pool.query(`
+      SELECT o.id, o.status, o.total_amount, o.created_at, 
+             c.name as customer_name, c.phone as customer_phone, c.address as customer_address
+      FROM orders o
+      JOIN customers c ON o.customer_id = c.id
+      ORDER BY o.created_at DESC
+      LIMIT 100
+    `);
+
+    // Fetch items for each order
+    for (const order of orders) {
+      const [items] = await pool.query(`
+        SELECT oi.quantity, m.name 
+        FROM order_items oi
+        JOIN menu_items m ON oi.menu_item_id = m.id
+        WHERE oi.order_id = ?
+      `, [order.id]);
+      order.items = items;
+    }
+
+    res.json({ ok: true, orders });
+  } catch (error) {
+    res.status(500).json({ ok: false, message: error.message });
+  }
+});
+
+app.patch("/api/orders/:id/status", async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+  
+  const validStatuses = ['pending', 'confirmed', 'preparing', 'out_for_delivery', 'delivered', 'cancelled'];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ ok: false, message: "Invalid status" });
+  }
+
+  try {
+    const [result] = await pool.query("UPDATE orders SET status = ? WHERE id = ?", [status, id]);
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ ok: false, message: "Order not found" });
+    }
+    res.json({ ok: true, message: "Status updated successfully" });
+  } catch (error) {
+    res.status(500).json({ ok: false, message: error.message });
+  }
+});
+
 const port = Number(process.env.PORT || 4000);
 if (process.env.NODE_ENV !== "production") {
   app.listen(port, () => {

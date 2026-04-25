@@ -160,8 +160,13 @@
 
     pushMsg(messages, "Bot", "Saving order in system and opening WhatsApp with your order format.");
 
+    // Dynamically determine API URL so it works locally and on Vercel
+    const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:' 
+      ? 'http://localhost:4000' 
+      : '';
+
     // Try backend API first (if server is running), fallback to WhatsApp-only flow.
-    fetch("/api/orders", {
+    fetch(`${API_BASE_URL}/api/orders`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
