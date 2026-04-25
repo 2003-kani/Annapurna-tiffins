@@ -1,9 +1,6 @@
 -- Annapurna Tiffins core database schema
 -- Compatible with MySQL 8+
 
-CREATE DATABASE IF NOT EXISTS annapurna_tiffins;
-USE annapurna_tiffins;
-
 CREATE TABLE IF NOT EXISTS customers (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(120) NOT NULL,
@@ -29,6 +26,11 @@ CREATE TABLE IF NOT EXISTS orders (
   delivery_charge DECIMAL(10,2) NOT NULL DEFAULT 0.00,
   total_amount DECIMAL(10,2) NOT NULL,
   notes TEXT,
+  restaurant_id BIGINT NULL,
+  customer_country_code CHAR(2) NOT NULL DEFAULT 'IN',
+  currency_code CHAR(3) NOT NULL DEFAULT 'INR',
+  fx_rate_to_inr DECIMAL(12,6) NULL,
+  external_order_ref VARCHAR(80) NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT fk_orders_customer FOREIGN KEY (customer_id) REFERENCES customers(id)
@@ -92,13 +94,7 @@ CREATE TABLE IF NOT EXISTS mcp_connections (
   CONSTRAINT fk_mcp_restaurant FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
 );
 
--- International order fields and restaurant ownership for order processing
-ALTER TABLE orders
-  ADD COLUMN restaurant_id BIGINT NULL,
-  ADD COLUMN customer_country_code CHAR(2) NOT NULL DEFAULT 'IN',
-  ADD COLUMN currency_code CHAR(3) NOT NULL DEFAULT 'INR',
-  ADD COLUMN fx_rate_to_inr DECIMAL(12,6) NULL,
-  ADD COLUMN external_order_ref VARCHAR(80) NULL;
+-- International order fields and restaurant ownership merged into CREATE TABLE
 
 -- Add this once in environments that do not already have the constraint:
 -- ALTER TABLE orders

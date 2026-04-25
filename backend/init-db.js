@@ -16,6 +16,10 @@ async function init() {
       port: Number(process.env.DB_PORT || 3306),
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '',
+      database: process.env.DB_NAME || 'annapurna_tiffins',
+      ssl: {
+        rejectUnauthorized: false
+      },
       multipleStatements: true // Required to run the entire SQL file
     });
 
